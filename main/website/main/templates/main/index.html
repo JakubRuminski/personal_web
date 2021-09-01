@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <header>
+        <title> Index </title>
+        <link rel="stylesheet" type="text/css" href="{% static '/main/css/index.css' %}" />
+        <script src="{% static '/main/javascript/index.js' %}" /></script>
+    </header>
+    <body>
+        <!-- Navbar -------------------------------------->
+        {% include 'main/nav_bars/local_top_nav.html' %}
+        <!--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+
+        <!-- Page Content -------------------------------->
+        <section id="main_content">
+            <!-- %include% make things slow? -->
+            {% include 'main/sections/home.html' %}
+
+            {% include 'main/sections/about.html' %}
+            
+            {% include 'main/sections/education.html' %}
+
+            {% include 'main/sections/projects.html' %}
+
+            {% include 'main/sections/contactme.html' %}
+        </section>
+        <!--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+    </body>
+    <footer>
+        
+    </footer>
+</html>

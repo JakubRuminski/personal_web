@@ -1,0 +1,398 @@
+/* 
+    Author: Jakub Ruminski
+     Email: jakubruminski09{at}gmail.com 
+ Published: dd/mm/2021 
+*/
+
+/* --- Behaviours ---------------------------------------------- */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling to location on page. */
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* --- Basic --------------------------------------------------- */
+body {
+    background-color: teal;
+    margin: 0;
+}
+
+h1 {
+    margin: 0em;
+    padding: 1em 0em;
+}
+a {
+    color: aquamarine;
+}
+ul {
+    padding-left: 0em;
+}
+
+pre {
+    display: none;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.credit {
+    display: block;
+    margin: auto;
+    background-color: black;
+    color: white;
+    font-size: smaller;
+    text-align: right;
+    padding: 0em 10% 0em 0em;
+}
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* --- Top Navigation Bar -------------------------------------- */
+#top_nav_bar {
+    position: fixed; /* Nav bar remains top. */
+    z-index: 9999;
+    overflow: hidden;
+    top: 0; /* floats to top. */
+    left: 0em; /* Removes left gap next to nav bar. */
+    width: 100%; /* Ensures nav bar fills width of browser window. */
+    background-color: darkgray;
+}
+
+.top_menu_bar {
+    display: flex;
+    justify-content: space-around;
+    background-color: grey;
+    list-style-type: none;
+    margin: 0em;
+    padding: 0.5em 0em;
+    width: 100%;
+}
+
+.nav_element {
+    padding: 0em 1em;
+}
+
+.nav_element > a {
+    text-decoration: none;
+    color: white;
+}
+.nav_element > a:active {
+    color: tomato;
+}
+
+/* ^^^ Top Navigation Bar ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* --- Section Basics ------------------------------------------ */
+#main_content {
+    display: block;
+    text-align: center;
+
+    text-decoration: none;
+}
+
+#main_content > section {
+    scroll-margin: 2.1em 0em; /* ensures heading is seen when link scrolling */
+}
+#main_content > section > h1 {
+    font-size: xx-large;
+}
+#main_content > section li {
+    list-style-type: none;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* --- [Home] Section ------------------------------------------ */
+#home {
+    background-color: rgb(41, 41, 41);
+    color: darkgrey;
+    padding: 2em 0em;
+    margin: 0;
+}
+#home h1 {
+    font-size: x-large;
+}
+
+#home ul {
+    display: flex;
+    justify-content: center;
+}
+#home .links {
+    padding: 0em 1em;
+}
+#home .links a {
+    color: aquamarine;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* --- [About] Section ----------------------------------------- */
+#about {
+    background-color: cadetblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#about h1 {
+    font-size: x-large;
+}
+#about > h1 {
+    flex: 100%;
+    font-size: xx-large;
+}
+#about h1 span {
+    display: block;  /* Appears below h1 */
+    font-weight: normal;
+    font-size: medium;
+}
+#about > section {
+    flex: 1;
+    padding: 1em 4em;
+}
+/* --- [Profile] Sub-Section ----------------------- */
+#profile li ~ li{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: larger;
+}
+/* ^^^ [Profile] Sub-Section ^^^^^^^^^^^^^^^^^^^^^^^ */
+/* --- [Programming overview] Sub-Section ------------------------ */
+#prog_languages li{
+    font-size: .8em;
+    text-align: left;
+    padding: 0.5em 0em 0em 0em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+#prog_languages label {
+    flex: 100%;
+    padding: 0em 0em 0em 0em;
+}
+
+#prog_languages .progress_bar:before {
+    content: attr(data-label);
+    background-color: azure;
+    font-size: small;
+    vertical-align: 0em;
+    padding: 0em 1em;
+}
+#prog_languages .progress_bar {
+    text-align: center;
+    width: 80%;
+    padding: 0em 0em 2em 0em;
+}
+
+/* --- Progress bars tutorial helped --> https://www.lambdatest.com/blog/how-to-create-a-cross-browser-compatible-html-progress-bar/ */
+progress[value] {
+    /* RESETS */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+/* WEBKIT BROWSERS (CHROME, SAFARI, OPERA) */
+#prog_overview .progress_bar[value]::-webkit-progress-bar {
+    height: .4em;
+    background-color:rgb(126, 223, 223); /* light blue customized from teal */
+}
+#prog_overview .progress_bar[value]::-webkit-progress-value {
+    background-color: teal;
+}
+/* MOZILLA FIREFOX */
+#prog_overview .progress_bar[value]::-moz-progress-bar {
+    height: .4em;
+    background-color:rgb(126, 223, 223); /* light blue customized from teal */
+    background-color: teal;
+}
+/* MICROSOFT EDGE INTERNET EXPLORER */
+#prog_overview .progress_bar[value]::-ms-fill {
+    height: .4em;
+}
+/* ^^^ [Programming Overview] Sub-Section ^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* ^^^ [About] Section ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+/* --- Education ------------------------------------------------- */
+#education {
+    padding: 0em 0em 0em 0em; 
+    margin: 0em;
+}
+
+#education > h1, #education > section {
+    margin: 0em;
+    background-color: black;
+    color: #838C95;
+}
+
+#education > img {
+    width: 100%;
+    height: auto;  
+    display: block; /* removes strip below img */
+}
+
+#comp_science_overview {
+    padding: 0em 0em 2em 0em;
+    display: flex;
+    flex-wrap: wrap;
+}
+#comp_science_overview > h1{
+    padding: 0em 0em 0em 0em;
+    flex: 100%;
+}
+#comp_science_overview > .year_overview {
+    flex: 1;
+    padding: 1em 2em;
+}
+/* --- Progress Bar stuff ------------------------ */
+.year_overview ul {
+    margin: auto;
+}
+
+.year_overview li{
+    font-size: 1em;
+    text-align: left;
+    padding: 0.5em 0em 0em 0em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+ .more_info {
+    display: flex;
+    flex-direction: column;
+    color: tomato;
+    font-size: smaller;
+    padding: 0em 0em 1.8em 1em;
+}
+
+#comp_science_overview .progress_bar:before {
+    content: attr(data-label);
+    background-color: rgb(88,88,88);
+    float: right;
+    color: #838C95;
+    color: black;
+    font-size: small;
+    vertical-align: 0em;
+    padding: 0em 1em;
+    margin: -1.5em 0em;
+}
+#comp_science_overview .progress_bar {
+    position: relative;
+    text-align: center;
+    width: 80%;
+    padding: 0em 0em 2.2em 0em;
+}
+progress[value] {
+    /* RESETS */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+/* WEBKIT BROWSERS (CHROME, SAFARI, OPERA) */
+#comp_science_overview .progress_bar[value]::-webkit-progress-bar {
+    height: .4em;
+    background-color:rgb(88, 88, 88); /* light blue customized from teal */
+}
+#comp_science_overview .progress_bar[value]::-webkit-progress-value {
+    background-color: #838C95;
+}
+/* MOZILLA FIREFOX */
+#comp_science_overview .progress_bar[value]::-moz-progress-bar {
+    height: .4em;
+    background-color:rgb(88, 88, 88); /* light blue customized from teal */
+    background-color: #838C95;
+}
+/* MICROSOFT EDGE INTERNET EXPLORER */
+#comp_science_overview .progress_bar[value]::-ms-fill {
+    height: .4em;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+/* ^^^ Education ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+/* --- Projects -------------------------------------------------- */
+#projects {
+    color: #838C95;
+    background-color: black;  /* Tmp-- should be black */
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0em;
+}
+#projects > h1 {
+    color: teal;
+    flex: 100%;
+}
+
+#projects .project_category > h1 {
+    font-size: x-large;
+    text-align: center;
+}
+
+#projects .project_category {
+    text-align: left;
+    padding: 1em 1em;
+    border: .2em solid black;
+    margin: 1em 1em 1em 1em;
+}
+#projects .project {
+    border: .2em solid hotpink;
+    padding: 1em;
+    margin: 1em;
+}
+.project .visibility_button {
+    color: black;
+    background-color: teal;
+}
+.project button {
+    background-color: transparent;
+    border: none;
+}
+
+/* displayed code from file */
+#projects pre {
+    padding: 1em;
+    color: white;
+}
+#projects .comment {
+    color: green;
+}
+#projects .string {
+    color: red;
+}
+#projects .brackets  {
+    color: darkslateblue;
+}
+#projects .statements1 {
+    color: deeppink;
+}
+#projects .statements1 {
+    color: blue;
+}
+#projects .function {
+    color: goldenrod;
+}
+
+.game {
+    text-align: center;
+}
+
+.game iframe{
+    /* Set the width of the iframe the size you want to transform it FROM */
+    width: 724px;
+    height: 510px;
+    /* apply the transform */
+    -webkit-transform:scale(0.80);
+    -moz-transform:scale(0.25);
+    -o-transform:scale(0.25);
+    transform:scale(0.85);
+    /* transform-origin: center; */
+}
+
+
+/* ^^^ Projects ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+/* --- Contact me ------------------------------------------------ */
+#contact_me {
+    background-color: black;
+    padding: 3em 0em
+}
+/* ^^^ Contact me ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */

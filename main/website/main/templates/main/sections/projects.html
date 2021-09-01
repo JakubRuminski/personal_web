@@ -1,0 +1,132 @@
+{% load static %}
+<section id="projects">
+    <h1> Projects </h1>
+
+    <!-- Don't remove. -->
+    <!-- <iframe src="https://jakubruminski.github.io/games/game_mars/" title="Mars Game" >  </iframe> -->
+    <!-- ^^^^^^^^^^^^^ -->
+    <script src = "{% static 'main/javascript/sections/projects.js' %}"> </script>
+    <ul>
+        <li class="project_category">
+            <h1>Python</h1>
+            <ul>
+                <li class='project'>
+                    <h1> Network Computing </h1>
+                    <h1> Assignment 1 10/10: </h1>
+                    <ul>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment1/client_solution.html' %}
+                        </li>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment1/client_solution_additional.html' %}
+                        </li>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment1/server_solution.html' %}
+                        </li>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment1/server_solution_additional.html' %}
+                        </li>
+                    </ul>
+                    <h1> Assignment 2 10/10: </h1>
+                    <ul>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment2/client_solution_lab3.html' %}                      
+                        </li>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment2/WebServer_solution_lab3.html' %}
+                        </li>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment2/WebServer_solution_additional_lab3.html' %}
+                        </li>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment2/UDPClient_lab4.html' %}
+                        </li>
+                        <li>
+                            {% include 'main/sections/files/projects/python/network_comp/assignment2/UDPServer_lab4.html' %}
+                        </li>
+                    </ul>
+                </li>
+                <li class='project'>
+                    <h1> Intermediate Programming </h1>
+                    <h1> Semester 1 30/30: </h1>
+                    <ul>
+                        <li>
+                            {% include 'main/sections/files/projects/python/interm_prog/assignment2/assignment2.html' %}
+                        </li>
+                    </ul>
+                <li class='project'>
+                    <h1> Algorithms & Data Structures </h1>
+                    <ul>
+                        <li>
+                            <h1> Semester 1 17/20: </h1>
+                            <ul>
+                                <li>
+                                    {% include 'main/sections/files/projects/python/algos/semester1/assignment1/assignment_descr.html' %}
+                                </li>
+                                <li>
+                                    {% include 'main/sections/files/projects/python/algos/semester1/assignment1/pytoonz.html' %}
+                                </li>
+                                <li>
+                                    {% include 'main/sections/files/projects/python/algos/semester1/assignment2/assignment_descr.html' %}
+                                </li>
+                                <li>
+                                    {% include 'main/sections/files/projects/python/algos/semester1/assignment2/bst.html' %}
+                                </li>
+                                <li>
+                                    {% include 'main/sections/files/projects/python/algos/semester1/assignment2/movie_library.html' %}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h1> Semester 2 20/20: </h1>
+                            <ul>
+                                <li>
+                                    {% include 'main/sections/files/projects/python/algos/semester2/assignment/assignment_descr.html' %}
+                                </li>
+                                <li>
+                                    {% include 'main/sections/files/projects/python/algos/semester2/assignment/assignment.html' %}
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="project_category">
+            <h1>Java</h1>
+            <ul>
+                <li class='project'>
+                    <ul>
+                        <li>
+                            <h1> Introduction to Java 81/100 </h1>
+                            <p> Module entirely was assignment based, consisting of two 50% assignments. This built on from previous programming modules but with an even heavier focus on code organisation, clarity, and reuse while following good object orientated style while programming to ensure encapsulation and inheritance. In this module combining both assignments I achieved 81/100 </p>
+                            <ul>
+                                <li>
+                                    <h1> Assignment 1 39/50 </h1>
+                                </li>
+                                <li>
+                                    <h1> Assignment 2 42/50 </h1>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="project_category"> 
+            <h1> Other </h1>
+            <ul>
+                <li class='project'> 
+                    <ul>
+                        <li>
+                            {% include 'main/sections/files/projects/mix/web_dev/assignment2/assignment.html' %}
+                        </li>
+                    </ul>
+                </li>
+                <li class='project'>
+                    {% include 'main/sections/files/projects/mix/bash/assignment2/assignment.html' %}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>

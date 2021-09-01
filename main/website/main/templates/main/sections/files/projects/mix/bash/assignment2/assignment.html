@@ -1,0 +1,101 @@
+<h1>Shell scripting</h1>
+<p> 
+    Assignment from Operating Systems in 2nd year involving the make of a ['mmv'-move, and 'rmv'-remove] command. The command mmv would maintain links, such that if a file was moved it's links would be found by the program and refreshed to point to the new location. Command rmv would act in a similar way as that once the file was removed(moved to a backup_bin) all it's links would be redirected to point to the new path. I got a 2 standard deviation relative to the class in this assignment.
+</p>
+<ul>
+    <li>
+        <label for=buttonF1> mmv: </label>
+        <button type="button" id='buttonF1' class='visibility_button' onClick="changeFileVisibility('buttonF1')"> View File </button>
+        <button type="button" id='lightbuttonF1' onClick="changeFileBackground('lightbuttonF1')">🌚</button>
+        <code>
+            <pre style='display: none;'>
+        #!/bin/bash
+
+        input1=$1               #file name
+        input2=$2               #new location
+
+        input1_cut=${input1##*/}          #retrieve file name from path if there is a path
+
+        find_links="$(find . -type l)"    # find links
+
+        for link in $find_links
+        do
+            if [ "$(readlink $link | grep -w $input1_cut)" ]        # if points to file
+            then
+                output="$(echo $link | grep -o '/' | wc -l)"    # check link depth
+                num_slashes="$(($output-1))"                    # count num of slashes
+                i=0
+                location="ln -sfn "                             # establish link command
+                while [ $i -lt $num_slashes ]           # while not enough slashes...add slashes
+                do
+                    string='../'
+                    location=("$location""$string")
+                    i=$(($i+1))
+                done
+                if [ -d "$input2" ]
+                then
+                        com=("$location""$input2""$input1_cut"\ "$link"\ ";")   #create command
+                else
+                        com=("$location""$input2"\ "$link"\ ";")
+                fi
+                commands=$commands$com                                  #add command to row of commands
+            fi
+        done
+
+        mv $input1 $input2                                              # move file
+        eval $commands                                                  # relink links
+        exit 0
+            </pre>
+        </code>
+    </li>
+    <li>
+        <label for=buttonF2> rmv: </label>
+        <button type="button" id='buttonF2' class='visibility_button' onClick="changeFileVisibility('buttonF2')"> View File </button>
+        <button type="button" id='lightbuttonF2' onClick="changeFileBackground('lightbuttonF2')">🌚</button>
+        <code>
+            <pre style='display: none;'>
+        #!/bin/bash
+
+        input=$1
+        rm $input
+
+        find_broken_links="$(find -L $HOME/*/blinking_dev_directory -type l -not -path "$cur_pwd/*.bak/*" -prune)"
+        bak_path="$(find $HOME/*/blinking_dev_directory -name '*.bak')"
+
+        bak_name=${bak_path##*/}
+        bak=${bak_path%%$bak_name*}             # used in for loop below where number of slashes is determined
+
+        num="$(echo $bak | grep -o '/' | wc -l)" # number of slashes
+
+        if [ $(echo $PWD | grep -w 'blinking_dev_directory') ]  # excludes anything before blink_dev_dir
+        then
+                extra1=${PWD##*blinking_dev_directory}
+                extra1=${extra1#?}                              #removes first char. meaning the backslash
+        fi
+        extra1=$extra1/
+        file=${input##*/}               # Gets file name
+        #path=${input%%/$file*}
+        extra2=${input##*blinking_dev_directory/}       #excludes blink_dev_dir and anything before
+
+        for link in $find_broken_links
+        do
+                if [ "$(readlink $link | grep -w $file)" ]      # changes only links which linked the file
+                then
+                        link_num="$(echo $link | grep -o '/' | wc -l)"
+                        slash_num=$(($link_num-$num))                   # Subtracts link from path to .bak folder
+                        com='ln -snf '
+                        i=0
+                        while [ $i -lt $slash_num ]
+                        do
+                                com=("$com""../")                       # num of times link has to go back up
+                                i=$(($i+1))
+                        done
+                        com=("$com""removed_files_4links.bak/blinking_dev_directory/""$extra1""$extra2"\ "$link"\ ";")
+                        command=$command$com
+                fi
+        eval $command
+        done
+            </pre>
+        </code>
+    </li>
+</ul>

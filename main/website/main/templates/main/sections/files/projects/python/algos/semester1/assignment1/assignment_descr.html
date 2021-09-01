@@ -1,0 +1,98 @@
+<label for=buttonD1> Assignment 1 Description: </label>
+<button type="button" id='buttonD1' class='visibility_button' onClick="changeFileVisibility('buttonD1')"> View File </button>
+<button type="button" id='lightbuttonD1' onClick="changeFileBackground('lightbuttonD1')">🌚</button>
+
+<code><pre style='display: none;'> 
+    ### A music playlist program ###
+
+    This assignment was locked 16 Nov 2020 at 17:00.
+Clarification (08/11/2020 - based on questions asked during the lab on Friday, and in emails and messages since): 
+
+comments in the submitted code are not required, but - if there are errors in your code, and I have to debug to find out what the mistakes are, comments might help me work out what you intended, and so the comments might help you gain more partial marks
+doc string comments are not required - but you are welcome to use them
+your output does not have to match the example output given below, but it should contain all the required information in easily readable format, and it should not swamp the screen with additional info that is not required
+the assignment focuses on the implementation and use of a DoublyLinkedList, so you should not be using a Python list to maintain your Track objects. See the sample code for the SinglyLinkedList in lectures. - your code for the DoublyLinkedList should be similar to that. in particular, you should be implementing and using the DLLNode class.
+Clarification (04/11/2020): when the current selection is at the last track, and next_track() is invoked, the intention was that the selection should wrap around the list to the first track (and similarly for prev_track() at the beginning of the list). I will also accept leaving the current selection where it is for those cases.
+
+ 
+
+This assignment is part of the formal continuous assessment for CS2515. It focuses on the implementation and use of the doubly linked list. It will count for up to 10% of the total marks available for CS2515.
+
+Since this is part of the formal assessment, the University's rules on plagiarism apply. You should not copy anyone else's code, you should not download code obtained from any website, you should not get anybody else to write the code for you, and you should not submit code that may have been submitted for similar assignments in previous years for this module. The work you submit must be your own. However, you are free to reuse any code that has been delivered this year in CS2515 lectures or labs by lecturing staff or demonstrators.
+
+The PyToonz PlayList
+The aim of the assignment is to use a doubly-linked list to simulate a simple playlist system for music files (but we will not be using real music files). The instructions below take you through the steps, and you should follow them in the order they are given.
+
+Design and implement a class Track, with fields name, artiste and timesplayed. Your Track class should have an __init__(...) method, a __str__() method, a get_name() method, a get_artiste() method, and a play() method to simulate the track being played -- for this exercise, all it needs to do is increment the timesplayed field, and then return a string representation of the track.  Make sure your write some test methods so that you can be sure your Track objects behave as expected. 
+
+Design and implement a class PyToonz, which is essentially a doubly-linked list of Track instances. The should offer the following methods (in addition to __init__(...)):
+
+__str__(), which should return a single string containing each track in the list on a separate line, where each track is represented by its name, artiste, and the number of times it has been played. The currently selected track, if any, should be preceded by '--> '.
+
+length(), which should report return the number of tracks in the library (Note: updated at 13:20 on 30/10/2020)
+add_track(track), which should add the given track object to the end of the list
+
+get_current(), which should return the currently selected track - if the list is empty, this should return None
+
+add_after(track), which should add the given track object after the one that is currently selected
+
+next_track(), which should change the current selection to the next one
+
+prev_track(), which should change the current selection to the previous one
+
+reset(), which should reset the current selection to the front of the list
+
+play(), which plays the currently selected track - it should simply call the track's own play() method, and print out whatever it returns, or print an error message if there is no currently selected track
+
+remove_current(), which should remove the current track from the list
+
+ 
+
+The class PyToonz must be implemented as a doubly-linked list. It is easiest to implement PyToonz to deal directly with a sequence of DLLNodes (i.e. implement all the required functionality of doubly linked lists directly into the PyToonz class - don't create a separate standalone DoublyLinkedList). If there are any tracks in the list, then there should always be a currently selected track; if the list is empty, then the currently selected track should be None. For this exercise, for invalid input, if we are obliged to return an item, we will return None, and otherwise we will do nothing. If you delete the currently selected track, make whatever came after it the new current track; if that goes off the end of the list, reset the current track to be the first in the list. You can choose to implement the list with the dummy head and tail, or without it -- using the dummy head and tail makes it easier to implement the methods to add and remove tracks, but requires a few additional lines of code to handle the current_track selection properly when you are at the start of end of the list.
+
+Test your class using the following sequence of operations:
+
+create an empty PyToonz list
+create the track ("Looking for me", "Paul Woolford and Diplo/Lomax", 0) and add it to the list
+create the track ("Giants", "Dermot Kennedy", 0) and add it to the list
+create the track ("Holy", "Justin Bieber Ft Chance", 0) and add it to the list
+display the list to the screen
+play the current track
+move current to the next track
+report the current track
+move the current to the previous track
+delete the current track
+display the list to the screen
+create the track ("Lemonade", "Internet Money / Gunna / Toliver", 0) and add it to the list
+move current to the next track
+play the current track
+display the list to the screen
+
+which should give you output something like:
+Playlist:
+--> Looking for me; Paul Woolford and Diplo / Lomax (0)
+Giants; Dermot Kennedy (0)
+Holy; Justin Bieber Ft Chance (0)
+
+Playing: Looking for me; Paul Woolford and Diplo / Lomax (1)
+
+Current track: Giants; Dermot Kennedy (0)
+
+Playlist:
+--> Giants; Dermot Kennedy (0)
+Holy; Justin Bieber Ft Chance (0)
+
+Playing: Holy; Justin Bieber Ft Chance (1)
+
+Playlist:
+Giants; Dermot Kennedy (0)
+--> Holy; Justin Bieber Ft Chance (1)
+Lemonade; Internet Money / Gunna / Toliver (0)
+
+This is just a simple example so that you can check that you are producing the right sort of output. You are strongly advised to test your own code using more extensive test methods than this. We will be using different methods to test your submitted software.
+
+Submission
+You must submit a single file, which must be named pytoonz.py. This file must contain your implementation of the Track class, the PyToonz class, and any classes you need for the Doubly Linked List.
+
+Make sure that you compile and test your code before submitting, and that you submit exactly the version that you tested (i.e. don't edit the files in any way after your last successful test, not even to improve formatting or add comments).
+</pre></code>

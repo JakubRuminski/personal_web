@@ -1,0 +1,34 @@
+<label for=buttonD3> Assignment 2 Description: </label>
+<button type="button" id='buttonD3' class='visibility_button' onClick="changeFileVisibility('buttonD3')"> View File </button>
+<button type="button" id='lightbuttonD3' onClick="changeFileBackground('lightbuttonD3')">🌚</button>
+<code>
+    <pre style='display: none;'>
+        The PyFlix Library
+The online Movie Library PyFlix must maintain a library of movie files that are available for users to stream. The library is dynamic, and keeps changing, with movies being added and removed frequently. Users will want to search the catalogue to see if particular movies are available. This assignment is to write Python classes to represent the catalogue using a recursively-defined Binary Search Tree. It will involve writing two classes - one for a generic BinarySearchTree, and one for a MovieLib. A MovieLib object will then contain a BST as one of its fields, and will issues appropriate method calls to that BST. The end user will never see the BST, but will only interact with the MovieLib. The MovieLib object should only have methods that make sense for managing and searching a movie library. We will also need a class to specify Movie objects (and a similar class so that we can test the underlying BST implementation). 
+
+ 
+
+Implementing the Binary Search Tree
+An outline of a BinarySearchTree class is given in the bstStub.py  download file. The class specifies a node in a BST, and since the node contains references to the left and right children, this gives a recursive definition of the (sub)tree which has this node as the root. The initialisation method and the instance variables are given. You do not need to modify this initialisation method. The other methods are given in terms of their signature, with some comments on their use. You must provide working code for every method, without changing the default method signatures (i.e. name and input arguments).  When we test your code, we will be issuing calls to each of the  specified methods. You can add extra methods (public or private) if it helps you to structure your code, but we will not test them with explicit calls.  The file also contains a class TestClass, which is used in the test routines to test the implementation of the BST. Note that the BST will accept objects of any class.
+
+The file also includes extra helper methods which you can use while testing and debugging your code:
+
+_print_structure(self) will print out to the screen a representation of the structure of the tree rooted at this node, one node per line. Each line contains the element at the node, the height, the elements of the two children (or * if no child), and the parent element (or *).
+_isthisapropertree(self) will return True if the tree rooted at this node is a properly implemented tree - that is, all parent and child references match up properly. While you are developing and debugging, you are advised to call this method after every addition or removal of a node, as it will quickly help to identify errors. But do not leave these calls in your final submitted code, as they will slow down the execution significantly on the largest test case.
+_properBST(self) will return True if the tree rooted at this node is a proper Binary Search Tree. First, it calls self._isthisapropertree(), and if that returns true, it then checks that the BST property is satisfied (i.e. that all left descendants have a lower value, and all right descendants have a higher value).
+ 
+
+In order to develop and test your code, you will need to create some trees, so I advise you develop the code in the following sequence, testing as you go along.
+
+Start by implementing the add(self, obj) method. The file includes a simple class method _testadd(), which you invoke by typing BSTNode._testadd() on the python command line. Make sure you understand what tree should be created, and then test your code by running this method.
+Then implement the __str__(self) method, which should create a string representing the in-order traversal of the tree. This will allow you to print out the contents of the trees as you create them, so that you can check whether or not elements have been successfully added or removed.
+Implement the search_node(search,item)method, which will return the BSTNode which matches searchitem (or None if there is no match). Then implement search(self,searchitem) which returns the element maintained at that BSTNode -- you can do this by simply calling search_node(search,item), and then reading the appropriate field from the BSTNode that is returned. Test your code on the tree returned by the _testadd() method.
+Implement the accessor methods -- findmaxnode(self), height(self), size(self), leaf(self), semileaf(self), full(self), internal(self) -- and test your code.
+Now implement the remove(self, searchitem) method. You are advised to implement remove_node(self) first, using the pseudocode supplied in bstStub.py, and then use that in your implementation of remove(self, searchitem). Test your code using the class method _test().
+Test your code by creating a tree and then adding or removing elements at the command line. Print the tree statistics and print the ordered sequence of elements.
+Implementing the movie library
+There is much less work to do in this section. An outline of a MovieLib class is given in the movieLibStub.py  downloadfile. Again, you need to complete the body of the specified methods.  Do not change the method signature of any of these methods, as they will be called during testing.  The file also contains a Movie class, and again you should not edit this in any way. - instead, you should use it to create Movie objects. The Movie class represents a movie's title, date of release, and running time. You should inspect it closely to see what methods are offered. Note: for the required part of this assignment, we will not be able to represent two different movies with the same title -- the first one added will be the one that is stored, until it is explicitly removed.
+
+The idea for the MovieLib class is to maintain a reference to the root of a binary search tree, and when you are asked to add a movie to the library, create the correct Movie object and then call the add(self,obj) method of the referenced BSTNode. Similarly, each of the remaining methods should call the appropriate methods on that BSTNode. In some cases, you will have to check that the BSTNode exists (i.e. that the movie library is not empty). As before, some test methods have been supplied so you can check the basics of your implementation.
+    </pre>
+</code>
